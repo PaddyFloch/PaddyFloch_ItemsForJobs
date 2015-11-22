@@ -15,7 +15,8 @@ How do I configure the script so it can fit my DarkRP server ?
 The configuration of the script is inside of the `shared.lua` and `init.lua` located here `lua\entities\entity_item4jobs-JobName`
 
 How do I create multiple items for different jobs ?
-Duplicate the `entity_item4jobs-example` folder, replace "example" by teh name of the job (`entity_item4jobs-example` --> `entity_item4jobs-police`) and then, edit the `shared.lua` and `init.lua` so it perfectly fits your server's needs.
+Duplicate the `entity_item4jobs-example` folder, replace "example" by teh name of the job (`entity_item4jobs-example` --> 
+`entity_item4jobs-police`) and then, edit the `shared.lua` and `init.lua` so it perfectly fits your server's needs.
 
 How can I contact you, if I have a problem with the script ?
 Open a ticket and I'll answer it as soon as possible. You can also contact me via E-Mail, PaddyFlochPROMessages@Outlook.fr
