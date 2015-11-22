@@ -6,7 +6,7 @@ Items for Jobs is a [Garry's Mod][] addon which adds entities that, when used gi
 
 1. Download the .zip folder from GitHub
 2. Unzip it
-3. Drag and drop the `paddy_item4jobs` directory into the `addons` section of your server.
+3. Drag and drop the `PaddyFloch_ItemsForJobs` directory into the `addons` section of your server.
 4. Set it up by edit the `shared.lua` and the `init.lua`
 
 #Q & A
