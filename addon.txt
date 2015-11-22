@@ -1,0 +1,11 @@
+"AddonInfo"
+{
+	"name"				"PaddyFloch's Item For Job"
+	"version"			"2.0"
+	"up_date"			"22/11/2015"
+	"author_name"			"PaddyFloch"
+	"author_email"			"PaddyFlochPROMessages@Outlook.fr"
+	"author_url"			"N/A"
+	"info"				"A script that allows you to get a job only by using a prop."
+	"override"			"0"
+}
