@@ -9,7 +9,7 @@ ENT.Base = "base_gmodentity"
 
 
 ENT.PrintName = "Items For Job "..JobName
-ENT.Instructions = "Press E or USE to use !"
+ENT.Instructions = "Press E or USE to interact !"
 ENT.Author = "PaddyFloch"
 ENT.Contact = "PaddyFlochPROMessages@Outlook.fr"
 
