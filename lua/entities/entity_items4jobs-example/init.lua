@@ -13,7 +13,11 @@ local ObjectModel = "models/props_interiors/coffee_maker.mdl" -- The model that 
 
 local GroupRestriction = false -- If you want that only certain groups use it (true/false).
 
+local DelayBeforeNextUse = 5 -- Enter in seconds the time that the player will need to wait before using the item again.
+
 local NotAllowedAlert = true -- Will tel the player that he hasn't got the permission to use the object with a message (true/false).
+
+local MustWaitAlertMessage = "You must wait".. DelayBeforeNextUse .. "seconds before using this item again !" -- The message that the player will receive if the delay before next use hasn't ended.
 
 local NotAllowedAlertMessage = "Only VIP's can use this item !" -- The message that the player will receive if they haven't got the permission.
 
@@ -28,6 +32,7 @@ local GroupsAllowed = { -- Insert here, the groups that you wanna be able to use
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+local DateInSeconds = os.time()
 
 function ENT:Initialize()
  
@@ -51,17 +56,33 @@ function ENT:Use( ply )
 		if GroupRestriction then
 			if table.HasValue(GroupsAllowed, ply:GetUserGroup()) then
 				RunConsoleCommand("rp_".. JobCommand, ply:Name() )
+				DateInSeconds = os.time()
+				if os.time() >= DateInSeconds + DelayBeforeNextUse then
+					RunConsoleCommand("rp_".. JobCommand, ply:Name() )
+				end
+				else
+					notification.AddLegacy( MustWaitAlertMessage, NOTIFY_ERROR, MustWaitAlertMessage )
+					surface.PlaySound( "buttons/button1.wav" )
+				end
 				if RemoveOnUse then
-				self:Remove()
+					self:Remove()
 				end
 			else
-			notification.AddLegacy( NotAllowedAlertMessage, NOTIFY_ERROR, NotAllowedAlertDelay )
-			surface.PlaySound( "buttons/button1.wav" )
+				notification.AddLegacy( NotAllowedAlertMessage, NOTIFY_ERROR, NotAllowedAlertDelay )
+				surface.PlaySound( "buttons/button1.wav" )
 			end
 		else
 			RunConsoleCommand("rp_".. JobCommand, ply:Name() )
+			DateInSeconds = os.time()
+			if os.time() >= DateInSeconds + DelayBeforeNextUse then
+				RunConsoleCommand("rp_".. JobCommand, ply:Name() )
+			end
+			else
+				notification.AddLegacy( MustWaitAlertMessage, NOTIFY_ERROR, MustWaitAlertMessage )
+				surface.PlaySound( "buttons/button1.wav" )
+			end
 			if RemoveOnUse then
-			self:Remove()
+				self:Remove()
 			end
 		end
 	end
