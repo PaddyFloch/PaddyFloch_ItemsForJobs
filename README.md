@@ -22,7 +22,7 @@ Open a ticket and I'll answer it as soon as possible. You can also contact me vi
 
 # License
 
-Copyright 2013-2015 CreationnyCorporation
+Copyright 2013-2016 CreationnyCorporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 

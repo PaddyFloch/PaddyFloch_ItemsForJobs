@@ -1,6 +1,6 @@
 --------- Configuration 2 -----------------------------------------------------------------------------------------------------------------------------
 
-JobName = "Police" -- The name of the job that you are using (Example : Police), use this fucntion if you have multiple items for jobs
+local JobName = "Police" -- The name of the job that you are using (Example : Police), use this fucntion if you have multiple items for jobs
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 

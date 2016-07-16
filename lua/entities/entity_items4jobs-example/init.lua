@@ -5,19 +5,21 @@ include("shared.lua")
 
 --------------------- Configuration -------------------------------------------------------------------------------------------------------------------------------------------
 
-JobCommand = "adp" -- The command that you gave to the job you wanna use (For example : Police command is /police so, insert police between these "" --> "police").
+local JobCommand = "adp" -- The command that you gave to the job you wanna use (For example : Police command is /police so, insert police between these "" --> "police").
 
-ObjectModel = "models/props_interiors/coffee_maker.mdl" -- The model that you wanna attribute to the object (Here, a coffee maker).
+local RemoveOnUse = true -- This command allows you to use the item only once when turned on (true/false).
 
-GroupRestriction = false -- If you want that only certain groups use it (true/false).
+local ObjectModel = "models/props_interiors/coffee_maker.mdl" -- The model that you wanna attribute to the object (Here, a coffee maker).
 
-NotAllowedAlert = true -- Will tel the player that he hasn't got the permission to use the object with a message (true/false).
+local GroupRestriction = false -- If you want that only certain groups use it (true/false).
 
-NotAllowedAlertMessage = "Only VIP's can use this item !" -- The message that the player will receive if they haven't got the permission.
+local NotAllowedAlert = true -- Will tel the player that he hasn't got the permission to use the object with a message (true/false).
 
-NotAllowedAlertDelay = 5 -- Delay before the alert desapears from screen.
+local NotAllowedAlertMessage = "Only VIP's can use this item !" -- The message that the player will receive if they haven't got the permission.
 
-GroupsAllowed = { -- Insert here, the groups that you wanna be able to use the object (Useless if GroupRestriction isn't equal to true).
+local NotAllowedAlertDelay = 5 -- Delay before the alert desapears from screen.
+
+local GroupsAllowed = { -- Insert here, the groups that you wanna be able to use the object (Useless if GroupRestriction isn't equal to true).
 	"superadmin",
 	"admin",
 	"operator",
