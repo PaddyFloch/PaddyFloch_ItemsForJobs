@@ -5,25 +5,21 @@ include("shared.lua")
 
 --------------------- Configuration -------------------------------------------------------------------------------------------------------------------------------------------
 
-local JobCommand = "adp" -- The command that you gave to the job you wanna use (For example : Police command is /police so, insert police between these "" --> "police").
+local JobCommand = "cp" -- The command that you gave to the job you wanna use (For example : Police command is /police so, insert police between these "" --> "police").
 
 local RemoveOnUse = true -- This command allows you to use the item only once when turned on (true/false).
 
-local ObjectModel = "models/props_interiors/coffee_maker.mdl" -- The model that you wanna attribute to the object (Here, a coffee maker).
+local ObjectModel = "models/props_junk/PopCan01a.mdl" -- The model that you wanna attribute to the object (Here, a coffee maker).
 
 local GroupRestriction = false -- If you want that only certain groups use it (true/false).
 
 local DelayBeforeNextUse = 5 -- Enter in seconds the time that the player will need to wait before using the item again.
 
-local NotAllowedAlert = true -- Will tel the player that he hasn't got the permission to use the object with a message (true/false).
+local NotAllowedAlert = true -- Will warn the player that he hasn't got the permission to use the object (true/false).
 
-local MustWaitAlertMessage = "You must wait".. DelayBeforeNextUse .. "seconds before using this item again !" -- The message that the player will receive if the delay before next use hasn't ended.
+local MustWaitAlert = true -- Will warn the player that he needs to wait a certain amount of time before reusing the item (true/false).
 
-local NotAllowedAlertMessage = "Only VIP's can use this item !" -- The message that the player will receive if they haven't got the permission.
-
-local NotAllowedAlertDelay = 5 -- Delay before the alert desapears from screen.
-
-local GroupsAllowed = { -- Insert here, the groups that you wanna be able to use the object (Useless if GroupRestriction isn't equal to true).
+local GroupsAllowed = { -- Insert here, the groups that you want to be able to use the object (Useless if GroupRestriction isn't equal to true).
 	"superadmin",
 	"admin",
 	"operator",
@@ -32,7 +28,9 @@ local GroupsAllowed = { -- Insert here, the groups that you wanna be able to use
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-local DateInSeconds = os.time()
+local CanUse = true
+
+local DateInSeconds = 0
 
 function ENT:Initialize()
  
@@ -40,6 +38,7 @@ function ENT:Initialize()
 	self:PhysicsInit( SOLID_VPHYSICS )
 	self:SetMoveType( MOVETYPE_VPHYSICS )
 	self:SetSolid( SOLID_VPHYSICS )
+	self:SetUseType( SIMPLE_USE )
  
         local phys = self:GetPhysicsObject()
 	if (phys:IsValid()) then
@@ -52,39 +51,42 @@ function ENT:Use( activator, caller )
 end
  
 function ENT:Use( ply )
-	if ( ply:IsPlayer() ) then
-		if GroupRestriction then
-			if table.HasValue(GroupsAllowed, ply:GetUserGroup()) then
-				RunConsoleCommand("rp_".. JobCommand, ply:Name() )
-				DateInSeconds = os.time()
-				if os.time() >= DateInSeconds + DelayBeforeNextUse then
+	if CanUse then
+		if ( ply:IsPlayer() ) then
+			if GroupRestriction then
+				if table.HasValue(GroupsAllowed, ply:GetUserGroup()) then
 					RunConsoleCommand("rp_".. JobCommand, ply:Name() )
-				end
+					CanUse = false
+					DateInSeconds = os.time()
+					if RemoveOnUse then
+						self:Remove()
+					end
+				else if NotAllowedAlert then
+					CanUse = false
+					DateInSeconds = os.time()
+					umsg.Start("NotAllowedAlert", ply)
+					umsg.End()
 				else
-					notification.AddLegacy( MustWaitAlertMessage, NOTIFY_ERROR, MustWaitAlertMessage )
-					surface.PlaySound( "buttons/button1.wav" )
+					CanUse = false
+					DateInSeconds = os.time()
 				end
+				end
+			else
+				RunConsoleCommand("rp_".. JobCommand, ply:Name() )
+				CanUse = false
+				DateInSeconds = os.time()
 				if RemoveOnUse then
 					self:Remove()
 				end
-			else
-				notification.AddLegacy( NotAllowedAlertMessage, NOTIFY_ERROR, NotAllowedAlertDelay )
-				surface.PlaySound( "buttons/button1.wav" )
-			end
-		else
-			RunConsoleCommand("rp_".. JobCommand, ply:Name() )
-			DateInSeconds = os.time()
-			if os.time() >= DateInSeconds + DelayBeforeNextUse then
-				RunConsoleCommand("rp_".. JobCommand, ply:Name() )
-			end
-			else
-				notification.AddLegacy( MustWaitAlertMessage, NOTIFY_ERROR, MustWaitAlertMessage )
-				surface.PlaySound( "buttons/button1.wav" )
-			end
-			if RemoveOnUse then
-				self:Remove()
 			end
 		end
+	else if os.time() >= DateInSeconds + DelayBeforeNextUse then
+		CanUse = true
+	else if MustWaitAlert then
+		umsg.Start("MustWaitAlert", ply)
+		umsg.End()
+	end
+	end
 	end
 end
  
