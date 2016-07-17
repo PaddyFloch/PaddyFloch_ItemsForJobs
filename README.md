@@ -1,6 +1,6 @@
 # Items for Jobs
 
-Items for Jobs is a [Garry's Mod][] addon which adds entities that, when used gives you a specific job. It can be use to control robots, vehicles, to make computers inside Garry's Mod, and much more!
+Items for Jobs is a [Garry's Mod][] addon which adds entities that, when used gives you a specific job.
 
 # Manual Installation
 
