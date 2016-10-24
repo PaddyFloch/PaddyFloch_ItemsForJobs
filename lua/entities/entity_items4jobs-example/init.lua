@@ -92,3 +92,5 @@ end
  
 function ENT:Think()
 end
+
+-- PaddyFloch® All Rights Reserved --

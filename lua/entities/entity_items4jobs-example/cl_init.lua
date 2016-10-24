@@ -6,15 +6,15 @@ local DelayBeforeNextUse = 5 -- Enter in seconds the time that the player will n
 
 local NotAllowedAlertDelay = 5 -- Delay before the alert desapears from screen.
 
-local MustWaitAlertMessage = "You must wait "..DelayBeforeNextUse.." seconds before using this item again !" -- The message that the player will receive if needs to wait before reusing the item.
+local MustWaitAlertMessage = "You must wait "..DelayBeforeNextUse.." seconds before using this item again !" -- The message that the player will receive if he needs to wait before reusing the item.
 
 local MustWaitAlertDelay = 5 -- Delay before the alert desapears from screen.
 
-local NotAllowedAlertMessage = "Only VIP's can use this item !" -- The message that the player will receive if they haven't got the permission.
+local NotAllowedAlertMessage = "Only VIP's can use this item !" -- The message that the player will receive if they hasn't got the permission.
 
-local CreateHalos = true -- Enable/disable the creations of halos around the ItemsForJobs entities (true/false)
+local CreateHalos = true -- Enable/disable the creation of halos around the ItemsForJobs's entities (true/false)
 
-local HaloColor = Color( 0, 0, 255 ) -- Here change the numbers to the color that fits the best using RGB (Here you can find a nice website to change the color : http://bit.ly/1SpRXIk)
+local HaloColor = Color( 0, 0, 255 ) -- Here you change the numbers to the color that fits the best using RGB (Here you can find a nice website to change the color : http://bit.ly/1SpRXIk)
 
 local ItemsForJobs_EntityName = "entity_items4jobs-example" -- Here enter the name of the entity folder that you are editing in (example : entity_items4jobs-police).
 
@@ -46,3 +46,5 @@ end)
 
 usermessage.Hook("MustWaitAlert", MustWaitAlert)
 usermessage.Hook("NotAllowedAlert", NotAllowedAlert)
+
+-- PaddyFloch® All Rights Reserved --

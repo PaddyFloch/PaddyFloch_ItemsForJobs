@@ -1,6 +1,6 @@
 --------- Configuration -----------------------------------------------------------------------------------------------------------------------------
 
-local JobName = "Police" -- The name of the job that you are using (Example : Police), use this fucntion if you have multiple items for jobs
+local JobName = "Police" -- The name of the job that you are using (Example : Police), use this function if you have multiple ItemsForJobs
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -20,3 +20,5 @@ ENT.AdminSpawnable = true
 function ENT:Draw()
 	self:DrawModel()
 end
+
+-- PaddyFloch® All Rights Reserved --
