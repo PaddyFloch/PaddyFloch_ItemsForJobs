@@ -1,8 +1,8 @@
 "AddonInfo"
 {
 	"name"				"PaddyFloch's Item For Job"
-	"version"			"3.0"
-	"up_date"			"22/11/2015"
+	"version"			"3.01"
+	"up_date"			"24/10/2016"
 	"author_name"			"PaddyFloch"
 	"author_email"			"PaddyFlochPROMessages@Outlook.fr"
 	"author_url"			"N/A"
